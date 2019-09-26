@@ -125,28 +125,14 @@ main {
     margin: auto;
     margin-top: 20px;
     display: grid;
-    grid-template-columns: 48% 48%;
-    column-gap: 4%;
+    grid-template-columns: 100%;
 }
 
-#form {
-    display: grid;
-    height: min-content;
-    grid-template-columns: 100%; 
-    padding: 20px;
-    border: 1px solid black;
-    border-radius: 10px;
-}
-
-.form-element {
-    width: 100%;
-}
 
 #queue {
     padding: 20px;
     border: 1px solid black;
     border-radius: 10px;
-    height: min-content;
 }
 
 .section-head {
@@ -163,10 +149,3 @@ main {
 .student-desc {
     margin-top: 10px;
 }
-
-@media (max-width: 900px) {
-    main {
-        grid-template-columns: 100%;
-        column-gap: 0;
-    }
-  }

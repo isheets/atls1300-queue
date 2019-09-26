@@ -10,7 +10,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Quicksand:700,600,500,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/admin.css">
 
 </head>
 
@@ -20,24 +20,6 @@
     </header>
 
     <main>
-        <section id="form">
-            <h2 class="section-head">GET IN THE QUEUE</h2>
-            
-            <div class="form-element">
-                <label for="name">Name</label>
-                <input placeholder="First Last" type="text" id="name" name="name" required>
-            </div>
-            
-            <div class="form-element">
-                <label for="desc">Optional Description</label>
-                <input placeholder="what the hell is a for loop?" type="text" id="desc" name="desc">
-            </div>
-
-            <button type="button" id="addToQueue">
-                ADD
-            </button>
-        </section>
-
         <section id="queue">
             <h2>HELP QUEUE IS EMPTY</h2>
         </section>
@@ -52,10 +34,10 @@
     <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-firestore.js"></script>
 
     <!-- initialize firebase connection -->
-    <script src="./js/init.js"></script>
+    <script src="../js/init.js"></script>
 
     <!-- main script -->
-    <script src="./js/index.js" defer></script>
+    <script src="../js/admin.js" defer></script>
 </body>
 
 </html>

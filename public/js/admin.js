@@ -3,33 +3,6 @@ console.log("js loaded!");
 //reference to database
 var db = firebase.firestore();
 
-//generate a unique id
-var uniqueId = () => {
-  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-    (
-      c ^
-      (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
-    ).toString(16)
-  );
-};
-
-//cache the user between sessions or generate a new user id - takes the place of actual authentication
-var studentID = localStorage.getItem("studentID");
-if (studentID === null) {
-  studentID = uniqueId();
-  localStorage.setItem("studentID", studentID);
-}
-
-//add click listener to add to queue button
-addButt = document.getElementById("addToQueue");
-addButt.addEventListener(
-  "click",
-  function() {
-    addToQueue();
-  },
-  false
-);
-
 var queue;
 
 //listen to changes in the entire queque collection and retrieve newest last
@@ -66,12 +39,9 @@ var updateQueue = () => {
                     <p class="student-desc">${student.description}</p>`
                     : ``
                 }
-            `;
-
-      if (student.studentID === studentID) {
-        view += `<button class="remove-from-queue" id="remove${i}">remove me</button>`;
-      }
-      view += "</article>";
+            
+        <button class="remove-from-queue" id="remove${i}">remove me</button>
+        </article>`;
       num++;
     }
   }
@@ -110,36 +80,4 @@ var deleteFromQueue = e => {
       });
     });
 };
-//add a student the to queue
-var addToQueue = e => {
-  //get values from inputs
-  let name = document.getElementById("name").value;
-  let desc = document.getElementById("desc").value;
 
-  //clear fields out
-  document.getElementById("name").value = '';
-  document.getElementById("desc").value = '';
-
-  if (name === "") {
-    alert("You gotta enter a name a least...");
-  } else {
-    console.log("name is not empty");
-
-    //Add a new student with a generated id.
-    db.collection("queue")
-      .add({
-        name: name,
-        description: desc,
-        studentID: studentID,
-        insertedAt: new Date()
-      })
-      .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch(function(error) {
-        console.error("Error adding document: ", error);
-      });
-  }
-};
-
-//function to update
