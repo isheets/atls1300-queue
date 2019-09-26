@@ -10,7 +10,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 
 </head>
 
@@ -20,7 +20,19 @@
     </header>
 
     <main>
-        <h2>Nobody in queue!</h2>
+        <section id="queue">
+            <h2>Nobody in queue!</h2>
+        </section>
+
+        <label for="name">Name:</label>
+        <input placeholder="First Last" type="text" id="name" name="name" required>
+
+        <label for="desc">Description (optional):</label>
+        <input placeholder="what the hell is a for loop?" type="text" id="desc" name="desc">
+
+        <button type="button" id="addToQueue">
+            I need help!
+        </button>
     </main>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -29,7 +41,8 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-analytics.js"></script>
-    
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-firestore.js"></script>
+
     <!-- initialize firebase connection -->
     <script src="./js/init.js"></script>
 
