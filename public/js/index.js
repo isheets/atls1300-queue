@@ -16,8 +16,8 @@ addButt.addEventListener(
 
 var queue;
 
-//listen to changes in the entire queque collection
-db.collection("queue").onSnapshot(function(querySnapshot) {
+//listen to changes in the entire queque collection and retrieve newest last
+db.collection("queue").orderBy('insertedAt').onSnapshot(function(querySnapshot) {
   queue = [];
   querySnapshot.forEach(function(doc) {
     queue.push(doc.data());
@@ -35,8 +35,9 @@ var updateQueue = () => {
 
   //loop over data and generate JSX if we have data
   if (queue.length > 0) {
+      view += `<h2 class="section-head">HELP QUEUE</h2>`
     for (let student of queue) {
-      view += `
+      view += `<article class="student">
                 <h3>${student.name}</h3>
                 ${
                   student.description !== undefined
@@ -44,7 +45,7 @@ var updateQueue = () => {
                     <p>${student.description}</p>`
                     : ``
                 }
-            `;
+            </article>`;
     }
   }
 
@@ -54,7 +55,7 @@ var updateQueue = () => {
   }
   //if we don't then take a break, smoke a j, chill out
   else {
-    queueContainer.innerHTML = `<h2>Nobody in queue!</h2>`;
+    queueContainer.innerHTML = `<h2>HELP QUEUE IS EMPTY</h2>`;
   }
 };
 
@@ -73,7 +74,8 @@ var addToQueue = e => {
     db.collection("queue")
       .add({
         name: name,
-        country: desc
+        description: desc,
+        insertedAt: new Date()
       })
       .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);

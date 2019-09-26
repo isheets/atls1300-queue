@@ -54,10 +54,97 @@ table {
 
 h1 {
     font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
     font-size: 200%;
 }
 
 h2 {
     font-family: 'Quicksand', sans-serif;
-    font-size: 120%;
+    font-size: 150%;
+    font-weight: 600;
+}
+
+h3 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 125%;
+    font-weight: 500;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+label{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    font-size: 125%;
+}
+
+input {
+    margin-top: 5px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+input:focus {
+    outline: none;
+    border: 1px dashed;
+}
+
+button {
+    cursor: pointer;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 110%;
+    background-color: white;
+    color: black;
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 0 0 black;
+}
+button:hover {
+    box-shadow: 3px 3px 0 0 black;
+}
+
+main {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 48% 48%;
+    column-gap: 4%;
+}
+
+#form {
+    display: grid;
+    height: min-content;
+    grid-template-columns: 100%; 
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#queue {
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.section-head {
+    margin-bottom: 15px;
+    
+}
+
+.student {
+    margin-bottom: 10px;
+    border-bottom: 1px dashed black;
+    padding-bottom: 10px;
 }

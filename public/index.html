@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=yes">
 
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Quicksand:700,600,500,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 
@@ -16,23 +16,31 @@
 
 <body>
     <header>
-        <h1>ATLS 1300 Lab Help Queue</h1>
+        <h1>LAB HELP QUEUE</h1>
     </header>
 
     <main>
+        <section id="form">
+            <h2 class="section-head">Add Your Name to The Queue</h2>
+            
+            <div>
+                <label for="name">Name</label>
+                <input placeholder="First Last" type="text" id="name" name="name" required>
+            </div>
+            
+            <div>
+                <label for="desc">Help Description</label>
+                <input placeholder="what the hell is a for loop?" type="text" id="desc" name="desc">
+            </div>
+
+            <button type="button" id="addToQueue">
+                ADD
+            </button>
+        </section>
+
         <section id="queue">
             <h2>Nobody in queue!</h2>
         </section>
-
-        <label for="name">Name:</label>
-        <input placeholder="First Last" type="text" id="name" name="name" required>
-
-        <label for="desc">Description (optional):</label>
-        <input placeholder="what the hell is a for loop?" type="text" id="desc" name="desc">
-
-        <button type="button" id="addToQueue">
-            I need help!
-        </button>
     </main>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
