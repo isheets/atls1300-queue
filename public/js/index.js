@@ -6,20 +6,25 @@ var db = firebase.firestore();
 //add click listener to add to queue button
 addButt = document.getElementById("addToQueue");
 console.log(addButt);
-addButt.addEventListener("click", addToQueue, false);
+addButt.addEventListener(
+  "click",
+  function() {
+    addToQueue();
+  },
+  false
+);
 
 var queue;
 
 //listen to changes in the entire queque collection
-db.collection("queue")
-  .onSnapshot(function(querySnapshot) {
-    queue = [];
-    querySnapshot.forEach(function(doc) {
-      queue.push(doc.data());
-    });
-    console.log(queue);
-    updateQueue();
+db.collection("queue").onSnapshot(function(querySnapshot) {
+  queue = [];
+  querySnapshot.forEach(function(doc) {
+    queue.push(doc.data());
   });
+  console.log(queue);
+  updateQueue();
+});
 
 var updateQueue = () => {
   //lazy load queue element
@@ -34,7 +39,7 @@ var updateQueue = () => {
       view += `
                 <h3>${student.name}</h3>
                 ${
-                  student.description
+                  student.description !== undefined
                     ? `
                     <p>${student.description}</p>`
                     : ``
@@ -54,25 +59,29 @@ var updateQueue = () => {
 };
 
 //add a student the to queue
-var addToQueue = (e) => {
-    console.log(e);
-    let name = document.getElementById("name").value;
-    let desc = document.getElementById("desc").value;
+var addToQueue = e => {
+  //get values from inputs
+  let name = document.getElementById("name").value;
+  let desc = document.getElementById("desc").value;
 
-    console.log(name);
-    console.log(desc);
-  // Add a new document with a generated id.
-//   db.collection("queue")
-//     .add({
-//       name: "Tokyo",
-//       country: "Japan"
-//     })
-//     .then(function(docRef) {
-//       console.log("Document written with ID: ", docRef.id);
-//     })
-//     .catch(function(error) {
-//       console.error("Error adding document: ", error);
-//     });
+  if (name === "") {
+    alert('You gotta enter a name a least...')
+  } else {
+    console.log("name is not empty");
+
+    //Add a new student with a generated id.
+    db.collection("queue")
+      .add({
+        name: name,
+        country: desc
+      })
+      .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
+  }
 };
 
 //function to update
