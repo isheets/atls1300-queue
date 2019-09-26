@@ -35,14 +35,14 @@ var updateQueue = () => {
 
   //loop over data and generate JSX if we have data
   if (queue.length > 0) {
-      view += `<h2 class="section-head">HELP QUEUE</h2>`
+      view += `<h2 class="section-head">CURRENT HELP QUEUE</h2>`
     for (let student of queue) {
       view += `<article class="student">
-                <h3>${student.name}</h3>
+                <h3 class="student-name">${student.name}</h3>
                 ${
                   student.description !== undefined
                     ? `
-                    <p>${student.description}</p>`
+                    <p class="student-desc">${student.description}</p>`
                     : ``
                 }
             </article>`;

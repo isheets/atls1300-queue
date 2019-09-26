@@ -72,6 +72,7 @@ h3 {
 
 p {
     font-family: 'Open Sans', sans-serif;
+    font-size: 95%;
 }
 
 label{
@@ -86,7 +87,7 @@ input {
     border: 1px solid black;
     border-radius: 5px;
     display: block;
-    width: 100%;
+    width: calc(100% - 10px);
     margin-bottom: 15px;
 }
 
@@ -114,6 +115,11 @@ button:hover {
     box-shadow: 3px 3px 0 0 black;
 }
 
+header {
+    margin-top: 20px;
+    text-align: center;
+}
+
 main {
     width: 90%;
     margin: auto;
@@ -124,12 +130,17 @@ main {
 }
 
 #form {
+    width: 100%;
     display: grid;
     height: min-content;
     grid-template-columns: 100%; 
     padding: 20px;
     border: 1px solid black;
     border-radius: 10px;
+}
+
+.form-element {
+    width: 100%;
 }
 
 #queue {
@@ -147,4 +158,8 @@ main {
     margin-bottom: 10px;
     border-bottom: 1px dashed black;
     padding-bottom: 10px;
+}
+
+.student-desc {
+    margin-top: 5px;
 }
